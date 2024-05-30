@@ -25,10 +25,10 @@
     <title>Frontend Mentor | Contact form</title>
 </head>
 <body x-data="contactForm()" class="antialiased min-h-screen bg-green-light px-4 py-8">
-  <main class="bg-white rounded-2xl p-6 md:max-w-[736px] md:mx-auto md:mt-24 md:p-10">
+  <main class="bg-white rounded-2xl p-6 md:max-w-[736px] md:mx-auto md:my-24 md:p-10">
       <form
           method="post"
-          class="text-gray-dark grid gap-y-[26px] md:grid-cols-2 md:gap-x-4"
+          class="text-gray-dark grid gap-y-[25px] md:grid-cols-2 md:gap-x-4"
       >
           <h1 class="text-3xl font-bold pb-1 md:col-span-2">Contact Us</h1>
 
@@ -116,7 +116,7 @@
               <span class=" after:content-['*'] after:ml-2 after:text-green">Message</span>
               <textarea
                   x-model="message"
-                  class="border border-gray rounded-md bg-white h-[240px] py-2.5 px-6 text-lg hover:border-green focus:outline-none focus:border-green md:h-[110px]"
+                  class="border border-gray rounded-md bg-white h-[240px] py-2.5 px-6 text-lg hover:border-green focus:outline-none focus:border-green md:h-[105px]"
                   required
               ></textarea>
               <span
@@ -126,7 +126,7 @@
               ></span>
           </label>
 
-          <div class="py-4 pl-0.5 md:col-span-2">
+          <div class="py-3 pl-0.5 md:col-span-2">
               <label class="flex items-center gap-4 cursor-pointer">
                   <input
                       x-model="consent"
