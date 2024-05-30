@@ -2,10 +2,11 @@ window.contactForm = function () {
 	return {
 		firstname: '',
 		lastname: '',
-		queryType: '',
+		selectedQueryType: '',
 		email: '',
 		message: '',
 		consent: '',
+		contactRequest: {},
 		validation: {
 			firstname: {
 				rule: {
@@ -48,7 +49,7 @@ window.contactForm = function () {
 					}
 				}
 			},
-			queryType: {
+			selectedQueryType: {
 				rule: {
 					required: function(field){
 						if (field) {
@@ -94,13 +95,41 @@ window.contactForm = function () {
 				this.validation[field].message = ''
 			}
 		},
+		successMessage: false,
 		submit() {
 			this.validate('firstname')
 			this.validate('lastname')
 			this.validate('email')
-			this.validate('queryType')
+			this.validate('selectedQueryType')
 			this.validate('message')
 			this.validate('consent')
+			if(
+				this.validation['firstname'].invalid === false &&
+				this.validation['lastname'].invalid === false &&
+				this.validation['email'].invalid === false &&
+				this.validation['selectedQueryType'].invalid === false &&
+				this.validation['message'].invalid === false &&
+				this.validation['consent'].invalid === false
+			) {
+				this.contactRequest = {
+					firstname: this.firstname,
+					lastname: this.lastname,
+					selectedQueryType: this.selectedQueryType,
+					email: this.email,
+					message: this.message,
+					consent: this.consent,
+				}
+				this.firstname =  ''
+				this.lastname =  ''
+				this.selectedQueryType =  ''
+				this.email =  ''
+				this.message =  ''
+				this.consent =  ''
+				this.successMessage = true
+				setTimeout(() => {
+					this.successMessage = false
+				}, 5000)
+			}
 		}
 	}
 }

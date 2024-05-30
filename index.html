@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Tailwind play cdn for this challenge ( for development and play purposes ) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind play cdn for this challenge ( for development and play purposes ) -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <script src="./src/tailwind.config.js"></script>
+    <script src="./src/tailwind.config.js"></script>
 
-  <!-- Alpine Core -->
-  <script defer src="https://unpkg.com/alpinejs@latest/dist/cdn.min.js"></script>
+    <!-- Alpine Plugins -->
+    <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
 
-  <title>Frontend Mentor | Contact form</title>
+    <!-- Alpine Core -->
+    <script defer src="https://unpkg.com/alpinejs@latest/dist/cdn.min.js"></script>
+
+    <title>Frontend Mentor | Contact form</title>
 </head>
 <body x-data="contactForm()" class="antialiased min-h-screen bg-green-light px-4 py-8">
   <main class="bg-white rounded-2xl p-6 md:max-w-[736px] md:mx-auto md:mt-24 md:p-10">
-      <form class="text-gray-dark grid gap-y-[26px] md:grid-cols-2 md:gap-x-4">
+      <form
+          method="post"
+          class="text-gray-dark grid gap-y-[26px] md:grid-cols-2 md:gap-x-4"
+      >
           <h1 class="text-3xl font-bold pb-1 md:col-span-2">Contact Us</h1>
 
-          <label class="grid gap-2">
+          <label class="grid content-start gap-2">
               <span class=" after:content-['*'] after:ml-2 after:text-green">First Name</span>
               <input
                   x-model="firstname"
@@ -41,7 +47,7 @@
               ></span>
           </label>
 
-          <label class="grid gap-2">
+          <label class="grid content-start gap-2">
               <span class=" after:content-['*'] after:ml-2 after:text-green">Last Name</span>
               <input
                   x-model="lastname"
@@ -66,7 +72,7 @@
               >
               <span
                   class="text-red"
-                  x-show="validation.lastname.invalid"
+                  x-show="validation.email.invalid"
                   x-text="validation.email.message"
               ></span>
           </label>
@@ -75,9 +81,11 @@
               <legend class="pb-4 after:content-['*'] after:ml-2 after:text-green">Query Type</legend>
               <label class="relative flex items-center gap-4 border border-gray rounded-md bg-white px-6 py-2.5 cursor-pointer hover:border-green focus-within:border-green transition">
                   <input
-                      x-model=""
+                      x-model="selectedQueryType"
+                      value="General Enquiry"
                       class="peer relative appearance-none shrink-0 w-5 h-5 border-2 border-gray/40 rounded-full bg-white focus:outline-none focus:border-green focus:bg-green-light checked:bg-green-light checked:border-0 transition"
                       name="queryType"
+                      checked="selectedQueryType = 'General Enquiry'"
                       type="radio"
                   >
                   <span class="absolute inset-0 rounded-md pointer-events-none opacity-0 peer-checked:opacity-100 peer-checked:bg-green-light transition"></span>
@@ -86,9 +94,11 @@
               </label>
               <label class="relative flex items-center gap-4 border border-gray rounded-md bg-white px-6 py-2.5 cursor-pointer hover:border-green focus-within:border-green transition">
                   <input
-                      x-model=""
+                      x-model="selectedQueryType"
+                      value="Support Request"
                       class="peer relative appearance-none shrink-0 w-5 h-5 border-2 border-gray/40 rounded-full bg-white focus:outline-none focus:border-green focus:bg-green-light checked:bg-green-light checked:border-0 transition"
                       name="queryType"
+                      checked="selectedQueryType = 'Support Request'"
                       type="radio"
                   >
                   <span class="absolute inset-0 rounded-md pointer-events-none opacity-0 peer-checked:opacity-100 peer-checked:bg-green-light transition"></span>
@@ -97,21 +107,21 @@
               </label>
               <span
                   class="text-red"
-                  x-show="validation.queryType.message"
-                  x-text="validation.queryType.message"
+                  x-show="validation.selectedQueryType.invalid"
+                  x-text="validation.selectedQueryType.message"
               ></span>
           </fieldset>
 
           <label class="grid gap-2 md:col-span-2">
               <span class=" after:content-['*'] after:ml-2 after:text-green">Message</span>
               <textarea
-                  x-model=""
+                  x-model="message"
                   class="border border-gray rounded-md bg-white h-[240px] py-2.5 px-6 text-lg hover:border-green focus:outline-none focus:border-green md:h-[110px]"
                   required
               ></textarea>
               <span
                   class="text-red"
-                  x-show="validation.message..message"
+                  x-show="validation.message.invalid"
                   x-text="validation.message.message"
               ></span>
           </label>
@@ -135,24 +145,31 @@
           </div>
 
           <button
-                  x-on;click="submit()"
-                  type="button"
-                  class="bg-green rounded-md p-4 text-white font-bold text-lg md:col-span-2 hover:bg-green-dark focus:outline-green-dark transition"
-          >Submit</button>
-<!--          <button-->
-<!--              x-on;click="submit()"-->
-<!--              type="button"-->
-<!--              class="bg-green rounded-md p-4 text-white font-bold text-lg"-->
-<!--          >Submit</button>-->
+              x-on:click="submit()"
+              type="button"
+              class="bg-green rounded-md p-4 text-white font-bold text-lg md:col-span-2 hover:bg-green-dark focus:outline-green-dark transition"
+          >
+              Submit
+          </button>
       </form>
 
-      <div class="hidden">
-          <h2>Message Sent!</h2>
-          <p>Thanks for completing the form. We'll be in touch soon!</p>
-      </div>
+      <section
+          x-show="successMessage"
+          class="fixed inset-x-0 top-4 md:top-8"
+          style="display: none !important"
+          x-transition
+      >
+          <div class="mx-8 sm:mx-auto sm:max-w-sm md:max-w-[400px] rounded-lg p-6 bg-green-dark text-white">
+              <div class="inline-flex items-center gap-2">
+                  <img src="./assets/images/icon-success-check.svg" alt="">
+                  <h2 class="font-bold">Message Sent!</h2>
+              </div>
+              <p class="text-sm">Thanks for completing the form. We'll be in touch soon!</p>
+          </div>
+      </section>
   </main>
   <footer>
-    <div class="fixed bottom-0 inset-x-0 bg-white/90 opacity-0 translate-y-2 py-2 text-xs text-gray-dark text-center hover:opacity-90 hover:translate-y-0 transition ease-out duration-300">
+    <div class="fixed bottom-0 inset-x-0 bg-white/90 border-t border-green-light opacity-0 translate-y-2 py-2 text-xs text-gray-dark text-center hover:opacity-90 hover:translate-y-0 transition ease-out duration-300">
       Challenge by <a class="text-gray-dark hover:text-green hover:underline ease-in-out duration-150" href="https://www.frontendmentor.io/challenges/contact-form--G-hYlqKJj" target="_blank">Frontend Mentor</a>.
       Coded by <a class="text-gray-dark hover:text-green hover:underline ease-in-out duration-150" href="https://www.frontendmentor.io/profile/wendyhamel" target="_blank">Wendy Hamel</a>.
     </div>
