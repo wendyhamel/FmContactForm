@@ -73,26 +73,26 @@
 
           <fieldset class="grid gap-4 md:grid-cols-2 md:col-span-2">
               <legend class="pb-4 after:content-['*'] after:ml-2 after:text-green">Query Type</legend>
-              <label class="relative flex items-center gap-4 border border-gray rounded-md bg-white px-6 py-2.5 cursor-pointer hover:border-green focus-within:border-green">
+              <label class="relative flex items-center gap-4 border border-gray rounded-md bg-white px-6 py-2.5 cursor-pointer hover:border-green focus-within:border-green transition">
                   <input
                       x-model=""
-                      class="peer relative appearance-none shrink-0 w-5 h-5 border-2 border-gray/40 rounded-full bg-white focus:outline-none focus:border-green focus:bg-green-light checked:bg-green-light checked:border-0"
+                      class="peer relative appearance-none shrink-0 w-5 h-5 border-2 border-gray/40 rounded-full bg-white focus:outline-none focus:border-green focus:bg-green-light checked:bg-green-light checked:border-0 transition"
                       name="queryType"
                       type="radio"
                   >
-                  <span class="absolute inset-0 rounded-md pointer-events-none hidden peer-checked:block peer-checked:bg-green-light"></span>
-                  <img class="absolute pointer-events-none hidden text-green peer-checked:block outline-none" src="./assets/images/icon-radio-selected.svg" alt="">
+                  <span class="absolute inset-0 rounded-md pointer-events-none opacity-0 peer-checked:opacity-100 peer-checked:bg-green-light transition"></span>
+                  <img class="absolute pointer-events-none opacity-0 text-green peer-checked:opacity-100 outline-none" src="./assets/images/icon-radio-selected.svg" alt="">
                   <span class="relative text-lg">General Enquiry</span>
               </label>
-              <label class="relative flex items-center gap-4 border border-gray rounded-md bg-white px-6 py-2.5 cursor-pointer hover:border-green focus-within:border-green">
+              <label class="relative flex items-center gap-4 border border-gray rounded-md bg-white px-6 py-2.5 cursor-pointer hover:border-green focus-within:border-green transition">
                   <input
                       x-model=""
-                      class="peer relative appearance-none shrink-0 w-5 h-5 border-2 border-gray/40 rounded-full bg-white focus:outline-none focus:border-green focus:bg-green-light checked:bg-green-light checked:border-0"
+                      class="peer relative appearance-none shrink-0 w-5 h-5 border-2 border-gray/40 rounded-full bg-white focus:outline-none focus:border-green focus:bg-green-light checked:bg-green-light checked:border-0 transition"
                       name="queryType"
                       type="radio"
                   >
-                  <span class="absolute inset-0 rounded-md pointer-events-none hidden peer-checked:block peer-checked:bg-green-light"></span>
-                  <img class="absolute pointer-events-none hidden text-green peer-checked:block outline-none" src="./assets/images/icon-radio-selected.svg" alt="">
+                  <span class="absolute inset-0 rounded-md pointer-events-none opacity-0 peer-checked:opacity-100 peer-checked:bg-green-light transition"></span>
+                  <img class="absolute pointer-events-none opacity-0 text-green peer-checked:opacity-100 outline-none" src="./assets/images/icon-radio-selected.svg" alt="">
                   <span class="relative text-lg">Support Request</span>
               </label>
               <span
@@ -121,10 +121,10 @@
                   <input
                       x-model="consent"
                       type="checkbox"
-                      class="peer relative appearance-none shrink-0 w-[18px] h-[18px] border-2 border-gray/80 rounded-sm bg-white focus:outline-none focus:border-green checked:border-transparent"
+                      class="peer relative appearance-none shrink-0 w-[18px] h-[18px] border-2 border-gray/80 rounded-sm bg-white focus:outline-none focus:border-green checked:border-transparent transition"
                       required
                   >
-                  <img class="absolute pointer-events-none hidden text-green peer-checked:block outline-none" src="./assets/images/icon-checkbox-check.svg" alt="">
+                  <img class="absolute pointer-events-none opacity-0 text-green peer-checked:opacity-100 outline-none transition" src="./assets/images/icon-checkbox-check.svg" alt="">
                   <span class="pl-1 after:content-['*'] after:ml-1 after:text-green"> I consent to being contacted by the team</span>
               </label>
               <span
@@ -137,7 +137,7 @@
           <button
                   x-on;click="submit()"
                   type="button"
-                  class="bg-green rounded-md p-4 text-white font-bold text-lg md:col-span-2"
+                  class="bg-green rounded-md p-4 text-white font-bold text-lg md:col-span-2 hover:bg-green-dark focus:outline-green-dark transition"
           >Submit</button>
 <!--          <button-->
 <!--              x-on;click="submit()"-->
