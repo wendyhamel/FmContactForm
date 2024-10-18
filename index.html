@@ -36,8 +36,10 @@
               <span class=" after:content-['*'] after:ml-2 after:text-green">First Name</span>
               <input
                   x-model="firstname"
+                  x-on:input="validate('firstname')"
                   type="text"
-                  class="border border-gray rounded-md bg-white px-6 py-2.5 text-lg cursor-pointer hover:border-green focus:outline-none focus:border-green"
+                  class="border rounded-md bg-white px-6 py-2.5 text-lg cursor-pointer hover:border-green focus:outline-none focus:border-green focus:ring-1"
+                  :class="validation.firstname.invalid ? 'border-red focus:border-red focus:ring-red' : 'border-gray focus:border-green focus:ring-green'"
                   required
               >
               <span
@@ -51,8 +53,10 @@
               <span class=" after:content-['*'] after:ml-2 after:text-green">Last Name</span>
               <input
                   x-model="lastname"
+                  x-on:input="validate('lastname')"
                   type="text"
-                  class="border border-gray rounded-md bg-white px-6 py-2.5 text-lg cursor-pointer hover:border-green focus:outline-none focus:border-green"
+                  class="border rounded-md bg-white px-6 py-2.5 text-lg cursor-pointer hover:border-green focus:outline-none focus:border-green focus:ring-1"
+                  :class="validation.lastname.invalid ? 'border-red focus:border-red focus:ring-red' : 'border-gray focus:border-green focus:ring-green'"
                   required
               >
               <span
@@ -66,8 +70,10 @@
               <span class=" after:content-['*'] after:ml-2 after:text-green">Email Address</span>
               <input
                   x-model="email"
+                  x-on:input="validate('email')"
                   type="text"
-                  class="border border-gray rounded-md bg-white px-6 py-2.5 text-lg cursor-pointer hover:border-green focus:outline-none focus:border-green"
+                  class="border rounded-md bg-white px-6 py-2.5 text-lg cursor-pointer hover:border-green focus:outline-none focus:border-green focus:ring-1"
+                  :class="validation.email.invalid ? 'border-red focus:border-red focus:ring-red' : 'border-gray focus:border-green focus:ring-green'"
                   required
               >
               <span
@@ -79,9 +85,10 @@
 
           <fieldset class="grid gap-4 md:grid-cols-2 md:col-span-2">
               <legend class="pb-4 after:content-['*'] after:ml-2 after:text-green">Query Type</legend>
-              <label class="relative flex items-center gap-4 border border-gray rounded-md bg-white px-6 py-2.5 cursor-pointer hover:border-green focus-within:border-green transition">
+              <label class="relative flex items-center gap-4 border border-gray rounded-md bg-white px-6 py-2.5 cursor-pointer hover:border-green focus-within:border-green focus-within:ring-1 focus-within:ring-green transition">
                   <input
                       x-model="selectedQueryType"
+                      x-on:input="validate('selectedQueryType')"
                       value="General Enquiry"
                       class="peer relative appearance-none shrink-0 w-5 h-5 border-2 border-gray/40 rounded-full bg-white focus:outline-none focus:border-green focus:bg-green-light checked:bg-green-light checked:border-0 transition"
                       name="queryType"
@@ -92,9 +99,10 @@
                   <img class="absolute pointer-events-none opacity-0 text-green peer-checked:opacity-100 outline-none" src="./assets/images/icon-radio-selected.svg" alt="">
                   <span class="relative text-lg">General Enquiry</span>
               </label>
-              <label class="relative flex items-center gap-4 border border-gray rounded-md bg-white px-6 py-2.5 cursor-pointer hover:border-green focus-within:border-green transition">
+              <label class="relative flex items-center gap-4 border border-gray rounded-md bg-white px-6 py-2.5 cursor-pointer hover:border-green focus-within:border-green focus-within:ring-1 focus-within:ring-green transition">
                   <input
                       x-model="selectedQueryType"
+                      x-on:input="validate('selectedQueryType')"
                       value="Support Request"
                       class="peer relative appearance-none shrink-0 w-5 h-5 border-2 border-gray/40 rounded-full bg-white focus:outline-none focus:border-green focus:bg-green-light checked:bg-green-light checked:border-0 transition"
                       name="queryType"
@@ -116,7 +124,9 @@
               <span class=" after:content-['*'] after:ml-2 after:text-green">Message</span>
               <textarea
                   x-model="message"
-                  class="border border-gray rounded-md bg-white h-[240px] py-2.5 px-6 text-lg hover:border-green focus:outline-none focus:border-green md:h-[105px]"
+                  x-on:input="validate('message')"
+                  class="border border-gray rounded-md bg-white h-[240px] py-2.5 px-6 text-lg hover:border-green focus:outline-none focus:border-green focus:ring-1 md:h-[105px]"
+                  :class="validation.message.invalid ? 'border-red focus:border-red focus:ring-red' : 'border-gray focus:border-green focus:ring-green'"
                   required
               ></textarea>
               <span
@@ -130,6 +140,7 @@
               <label class="flex items-center gap-4 cursor-pointer">
                   <input
                       x-model="consent"
+                      x-on:input="validate('consent')"
                       type="checkbox"
                       class="peer relative appearance-none shrink-0 w-[18px] h-[18px] border-2 border-gray/80 rounded-sm bg-white focus:outline-none focus:border-green checked:border-transparent transition"
                       required
