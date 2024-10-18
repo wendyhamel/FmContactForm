@@ -83,12 +83,14 @@
               ></span>
           </label>
 
-          <fieldset class="grid gap-4 md:grid-cols-2 md:col-span-2">
+          <fieldset
+                  class="grid gap-4 md:grid-cols-2 md:col-span-2"
+          >
               <legend class="pb-4 after:content-['*'] after:ml-2 after:text-green">Query Type</legend>
               <label class="relative flex items-center gap-4 border border-gray rounded-md bg-white px-6 py-2.5 cursor-pointer hover:border-green focus-within:border-green focus-within:ring-1 focus-within:ring-green transition">
                   <input
                       x-model="selectedQueryType"
-                      x-on:input="validate('selectedQueryType')"
+                      x-on:blur="validate('selectedQueryType')"
                       value="General Enquiry"
                       class="peer relative appearance-none shrink-0 w-5 h-5 border-2 border-gray/40 rounded-full bg-white focus:outline-none focus:border-green focus:bg-green-light checked:bg-green-light checked:border-0 transition"
                       name="queryType"
@@ -102,7 +104,7 @@
               <label class="relative flex items-center gap-4 border border-gray rounded-md bg-white px-6 py-2.5 cursor-pointer hover:border-green focus-within:border-green focus-within:ring-1 focus-within:ring-green transition">
                   <input
                       x-model="selectedQueryType"
-                      x-on:input="validate('selectedQueryType')"
+                      x-on:blur="validate('selectedQueryType')"
                       value="Support Request"
                       class="peer relative appearance-none shrink-0 w-5 h-5 border-2 border-gray/40 rounded-full bg-white focus:outline-none focus:border-green focus:bg-green-light checked:bg-green-light checked:border-0 transition"
                       name="queryType"
