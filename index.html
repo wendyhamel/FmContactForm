@@ -37,6 +37,7 @@
               <input
                   x-model="firstname"
                   x-on:input="validate('firstname')"
+                  x-on:blur="validate('firstname')"
                   type="text"
                   class="border rounded-md bg-white px-6 py-2.5 text-lg cursor-pointer hover:border-green focus:outline-none focus:border-green focus:ring-1"
                   :class="validation.firstname.invalid ? 'border-red focus:border-red focus:ring-red' : 'border-gray focus:border-green focus:ring-green'"
@@ -54,6 +55,7 @@
               <input
                   x-model="lastname"
                   x-on:input="validate('lastname')"
+                  x-on:blur="validate('lastname')"
                   type="text"
                   class="border rounded-md bg-white px-6 py-2.5 text-lg cursor-pointer hover:border-green focus:outline-none focus:border-green focus:ring-1"
                   :class="validation.lastname.invalid ? 'border-red focus:border-red focus:ring-red' : 'border-gray focus:border-green focus:ring-green'"
@@ -71,6 +73,7 @@
               <input
                   x-model="email"
                   x-on:input="validate('email')"
+                  x-on:blur="validate('email')"
                   type="text"
                   class="border rounded-md bg-white px-6 py-2.5 text-lg cursor-pointer hover:border-green focus:outline-none focus:border-green focus:ring-1"
                   :class="validation.email.invalid ? 'border-red focus:border-red focus:ring-red' : 'border-gray focus:border-green focus:ring-green'"
@@ -127,6 +130,7 @@
               <textarea
                   x-model="message"
                   x-on:input="validate('message')"
+                  x-on:blur="validate('message')"
                   class="border border-gray rounded-md bg-white h-[240px] py-2.5 px-6 text-lg hover:border-green focus:outline-none focus:border-green focus:ring-1 md:h-[105px]"
                   :class="validation.message.invalid ? 'border-red focus:border-red focus:ring-red' : 'border-gray focus:border-green focus:ring-green'"
                   required
@@ -142,7 +146,7 @@
               <label class="flex items-center gap-4 cursor-pointer">
                   <input
                       x-model="consent"
-                      x-on:input="validate('consent')"
+                      x-on:blur="validate('consent')"
                       type="checkbox"
                       class="peer relative appearance-none shrink-0 w-[18px] h-[18px] border-2 border-gray/80 rounded-sm bg-white focus:outline-none focus:border-green checked:border-transparent transition"
                       required
